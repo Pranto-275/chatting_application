@@ -16,7 +16,7 @@
     <div class="header">
       <div class="content">
        <div class="back">
-       <a href="home.html"> <i class="fa-solid fa-arrow-left"></i></a>
+       <a href="home.php"> <i class="fa-solid fa-arrow-left"></i></a>
        </div>
         <img src="img/4.jpg" alt="" style="height:50px;width: 50px;">
         <div class="details">
