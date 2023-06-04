@@ -1,3 +1,30 @@
+<?php
+global $connection;
+include 'connection.php';
+session_start();
+$message = '';
+
+$user_name =     $_SESSION['user_name'];
+$user_image =     $_SESSION['user_image'];
+$use_id = $_SESSION['user_id'];
+
+if (!$_SESSION['user_name']){
+  header('Location:login.php');
+}
+
+$friend_id = $_REQUEST['id'];
+
+
+
+$friend_info_query = "SELECT * FROM users WHERE  user_id = '$friend_id'";
+$friend_info_query_result = mysqli_query($connection,$friend_info_query);
+
+$data = mysqli_fetch_assoc($friend_info_query_result);
+
+
+
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -18,9 +45,9 @@
        <div class="back">
        <a href="home.php"> <i class="fa-solid fa-arrow-left"></i></a>
        </div>
-        <img src="img/4.jpg" alt="" style="height:50px;width: 50px;">
+        <img src="<?php echo $data['image']; ?>" alt="" style="height:50px;width: 50px;">
         <div class="details">
-          <span><b>Lily</b></span>
+          <span><b><?php echo $data['full_name']; ?></b></span>
           <p>Active Now</p>
         </div>
       </div>
@@ -65,3 +92,9 @@
 </body>
 
 </html>
+
+
+
+<?php
+mysqli_close($connection);
+?>

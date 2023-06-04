@@ -13,8 +13,6 @@ if (!$_SESSION['user_name']){
 }
 
 
-$user_list = "SELECT * FROM users WHERE  user_id <> '$use_id'";
-$user_list_query = mysqli_query($connection,$user_list);
 
 ?>
 
@@ -55,32 +53,7 @@ $user_list_query = mysqli_query($connection,$user_list);
 
 
 
-    <div class="peopole_list_body">
-
-
-      <?php
-      while ($row = mysqli_fetch_assoc($user_list_query)){   ?>
-
-        <div class="people_list">
-          <div class="content">
-            <img src="<?php echo $row['image']; ?>" alt="" style="height:50px;width: 50px;">
-            <div class="details">
-              <a href="chatbox.php?user_id=<?php echo $row['user_id']; ?>"><span><?php echo $row['full_name']; ?></span></a>
-              <p>This is text Message</p>
-            </div>
-          </div>
-          <span style="color:#4cd137"><i class="fa-solid fa-circle"></i></span>
-        </div>
-
-
-        <?php
-      }
-
-      ?>
-
-    
-
-  </div>
+    <div class="peopole_list_body"></div>
 
     
   </div>
@@ -90,6 +63,12 @@ $user_list_query = mysqli_query($connection,$user_list);
 
   <script src="js/jquery.min.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/custom.js"></script>
 </body>
 
 </html>
+
+
+<?php
+mysqli_close($connection);
+?>
